@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('slider');
   const prevButton = document.getElementById('prev');
   const nextButton = document.getElementById('next');
+  const clearButton = document.getElementById('clear');
   const fileInput = document.getElementById('file-input');
   const lyricsList = document.getElementById('lyrics-list');
 
@@ -65,6 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
       showSlide(currentIndex);
   }
 
+  function clearSlider() {
+      slider.innerHTML = '';
+      currentIndex = 0;
+      slides = [];
+  }
+
   fileInput.addEventListener('change', (event) => {
       const files = Array.from(event.target.files);
       lyricsList.innerHTML = '';
@@ -80,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   nextButton.addEventListener('click', showNextSlide);
   prevButton.addEventListener('click', showPrevSlide);
+  clearButton.addEventListener('click', clearSlider);
   document.addEventListener('keydown', (event) => {
       switch (event.key) {
           case 'ArrowLeft':
