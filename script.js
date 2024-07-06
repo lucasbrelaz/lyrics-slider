@@ -13,10 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function showSlide(index) {
       slides.forEach((slide, i) => {
           if (i === index) {
-              slide.style.display = 'block';
               slide.style.opacity = 1;
           } else {
-              slide.style.display = 'none';
+              slide.style.opacity = 0;
           }
       });
   }
@@ -24,27 +23,33 @@ document.addEventListener('DOMContentLoaded', () => {
   function showNextSlide() {
       if (currentIndex < slides.length - 1) {
           currentIndex++;
-          showSlide(currentIndex);
-      } else {
           fadeEffect();
+      } else {
+          // Apenas para sinalizar que não há mais slides disponíveis
+          console.log('Não há mais slides disponíveis para avançar.');
       }
   }
 
   function showPrevSlide() {
       if (currentIndex > 0) {
           currentIndex--;
-          showSlide(currentIndex);
-      } else {
           fadeEffect();
+      } else {
+          // Apenas para sinalizar que não há mais slides disponíveis
+          console.log('Não há mais slides disponíveis para retroceder.');
       }
   }
 
   function fadeEffect() {
-      const currentSlide = slides[currentIndex];
-      currentSlide.style.opacity = 0.5;
-      setTimeout(() => {
-          currentSlide.style.opacity = 1;
-      }, 500);
+      slides.forEach((slide, i) => {
+          if (i === currentIndex) {
+              slide.style.opacity = 1;
+              slide.style.pointerEvents = 'auto';
+          } else {
+              slide.style.opacity = 0;
+              slide.style.pointerEvents = 'none';
+          }
+      });
   }
 
   function showFirstSlide() {
@@ -63,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const text = event.target.result;
           const lines = text.split('\n').map(line => line.trim());
           const nonEmptyLines = lines.filter(line => line !== '');
+          
+          // Limpar slides existentes antes de carregar novos
+          clearSlider();
+          
           slides = nonEmptyLines.map(createSlide);
           renderSlides();
       };
