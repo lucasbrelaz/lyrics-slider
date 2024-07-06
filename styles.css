@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: url('background.png') #fff no-repeat;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.slider {
+  position: relative;
+  height: 200px; /* Defina uma altura fixa para o contêiner do slider */
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%; /* Ajuste a altura para ocupar todo o contêiner do slider */
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 64px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex; /* Adiciona flexbox para centralizar o texto verticalmente */
+  align-items: center; /* Centraliza o texto verticalmente */
+  justify-content: center; /* Centraliza o texto horizontalmente */
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+  margin-top: 20px;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destaque de Texto por Linha</title>
+    <style>
+      body {
+        background-color: #222;
+      }
+        .palco {
+          color: #eee;
+            padding: 20px;
+            margin: 20px;
+            white-space: pre-line; /* Permite a quebra de linha */
+            cursor: text;
+            font-size: 96px;
+            font-family: sans-serif;
+        }
+
+        .linha {
+            display: block;
+            cursor: pointer;
+        }
+
+        .destaque {
+            color: #22c3cc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="palco">
+      Mesmo antes do princípio
+      Antes mesmo do existir
+      No silêncio eterno da imensidão
+      Tu reinavas soberano em poder
+      Por Tua ordem fez-se a vida
+      Por Tua graça veio a ser
+      O Universo inteiro por Teu falar
+      Quem existe para te igualar?
+      …
+      Viverei pra servir meu louvor
+      Viverei pra Tua presença buscar
+      Nada vai calar esse hino de amor
+      Aos Seus pés prostrado quero estar
+      Humilde Te adorar
+      …
+      Teus caminhos são ocultos
+      Insondável Teu saber
+      Assombrosa forma do Teu agir
+      Força alguma pode Te resistir
+      O mistério do infinito
+      Em o homem fez viver
+      Revelaste a glória do Teu poder
+      Numa cruz se humilhando ao morrer
+      …
+      Viverei pra servir meu louvor
+      Viverei pra Tua presença buscar
+      Nada vai calar esse hino de amor
+      Aos Seus pés prostrado quero estar
+      …
+      Viverei pra servir meu louvor
+      Viverei pra Tua presença buscar
+      Nada vai calar esse hino de amor
+      Aos Seus pés prostrado quero estar
+      Humilde Te adorar
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var palco = document.querySelector('.palco');
+
+            palco.addEventListener('click', function(event) {
+                var target = event.target;
+
+                if (target.classList.contains('linha')) {
+                    var span = target;
+                    var linhas = palco.querySelectorAll('.linha');
+                    linhas.forEach(function(linha) {
+                        linha.classList.remove('destaque');
+                    });
+                    span.classList.add('destaque');
+                }
+            });
+
+            // Envolvendo cada linha em um span
+            var linhas = palco.textContent.split('\n');
+            palco.innerHTML = ''; // Limpa o conteúdo da div
+            linhas.forEach(function(linha) {
+                var span = document.createElement('span');
+                span.classList.add('linha');
+                span.textContent = linha + '\n'; // Adiciona a quebra de linha
+                palco.appendChild(span);
+            });
+        });
+    </script>
+</body>
+</html>
