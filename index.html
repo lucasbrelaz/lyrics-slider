@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1>Music Lyrics Slider</h1>
+    <div class="lyrics-list-container">
+        <h2>Select Lyrics Files</h2>
+        <input type="file" id="file-input" multiple>
+        <ul id="lyrics-list"></ul>
+    </div>
     <div class="slider-container">
-        <div class="slider" id="slider"></div>
+        <div id="slider" class="slider"></div>
+        <div class="controls">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+        </div>
     </div>
-    <div class="controls">
-        <button id="prev">Anterior</button>
-        <button id="next">Próximo</button>
-    </div>
-    <input type="file" id="file-input" accept=".txt">
     <script src="script.js"></script>
 </body>
 </html>

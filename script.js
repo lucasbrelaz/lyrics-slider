@@ -3,12 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevButton = document.getElementById('prev');
   const nextButton = document.getElementById('next');
   const fileInput = document.getElementById('file-input');
+  const lyricsList = document.getElementById('lyrics-list');
 
   let currentIndex = 0;
   let slides = [];
+  let filesMap = new Map();
 
   function showSlide(index) {
-      console.log(`Showing slide index: ${index}`);
       slides.forEach((slide, i) => {
           if (i === index) {
               slide.classList.add('active');
@@ -39,14 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function loadLyrics(file) {
-      console.log(`Loading file: ${file.name}`);
       const reader = new FileReader();
       reader.onload = function(event) {
           const text = event.target.result;
-          console.log(`File content:\n${text}`);
           const lines = text.split('\n').map(line => line.trim());
           const nonEmptyLines = lines.filter(line => line !== '');
-          console.log(`Parsed lines:\n${nonEmptyLines.join('\n')}`);
           slides = nonEmptyLines.map(createSlide);
           renderSlides();
       };
@@ -57,27 +55,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const slide = document.createElement('div');
       slide.classList.add('slide');
       slide.textContent = text;
-      console.log(`Created slide with text: ${text}`);
       return slide;
   }
 
   function renderSlides() {
       slider.innerHTML = '';
       slides.forEach(slide => slider.appendChild(slide));
-      console.log(`Rendered ${slides.length} slides`);
       currentIndex = 0;
       showSlide(currentIndex);
   }
 
-  nextButton.addEventListener('click', showNextSlide);
-  prevButton.addEventListener('click', showPrevSlide);
   fileInput.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-          loadLyrics(file);
-      }
+      const files = Array.from(event.target.files);
+      lyricsList.innerHTML = '';
+      filesMap.clear();
+      files.forEach(file => {
+          filesMap.set(file.name, file);
+          const listItem = document.createElement('li');
+          listItem.textContent = file.name;
+          listItem.addEventListener('click', () => loadLyrics(file));
+          lyricsList.appendChild(listItem);
+      });
   });
 
+  nextButton.addEventListener('click', showNextSlide);
+  prevButton.addEventListener('click', showPrevSlide);
   document.addEventListener('keydown', (event) => {
       switch (event.key) {
           case 'ArrowLeft':
