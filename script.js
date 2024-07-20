@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
       slides.forEach((slide, i) => {
           if (i === index) {
               slide.style.opacity = 1;
+              slide.style.pointerEvents = 'auto';
           } else {
               slide.style.opacity = 0;
+              slide.style.pointerEvents = 'none';
           }
       });
   }
@@ -97,6 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
       slides = [];
   }
 
+  function handleFileSelect(file, listItem) {
+      loadLyrics(file);
+      const items = lyricsList.querySelectorAll('li');
+      items.forEach(item => item.classList.remove('selected'));
+      listItem.classList.add('selected');
+  }
+
   fileInput.addEventListener('change', (event) => {
       const files = Array.from(event.target.files);
       lyricsList.innerHTML = '';
@@ -105,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
           filesMap.set(file.name, file);
           const listItem = document.createElement('li');
           listItem.textContent = file.name;
-          listItem.addEventListener('click', () => loadLyrics(file));
+          listItem.addEventListener('click', () => handleFileSelect(file, listItem));
           lyricsList.appendChild(listItem);
       });
   });

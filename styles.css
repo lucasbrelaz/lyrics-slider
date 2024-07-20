@@ -9,6 +9,14 @@ body {
   background: url('background.png') #fff no-repeat;
 }
 
+#lyrics-list li {
+  cursor: pointer;
+}
+
+#lyrics-list li.selected {
+  font-weight: bold;
+}
+
 .slider-container {
   overflow: hidden;
   width: 80%;
