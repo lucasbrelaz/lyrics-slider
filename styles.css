@@ -9,11 +9,22 @@ body {
   background: url('background.png') #fff no-repeat;
 }
 
-#lyrics-list li {
+.lyrics-list-container {
+  opacity: .5;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+#lyricsList:empty {
+  display: none;
+}
+
+#lyricsList li {
   cursor: pointer;
 }
 
-#lyrics-list li.selected {
+#lyricsList li.selected {
   font-weight: bold;
 }
 
@@ -36,7 +47,6 @@ body {
   height: 100%; /* Ajuste a altura para ocupar todo o contêiner do slider */
   box-sizing: border-box;
   padding: 20px;
-  border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -52,10 +62,14 @@ body {
   opacity: 1;
 }
 
-.controls {
+.slider-controls {
   display: flex;
   justify-content: center;
   gap: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  opacity: .5;
 }
 
 button {
@@ -72,6 +86,6 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-input[type="file"] {
-  margin-top: 20px;
+#inputLyrics {
+  display: none;
 }
