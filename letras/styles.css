@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url('../background.png');
+  background-size: cover; /* Faz a imagem cobrir todo o fundo */
+  background-position: center; /* Centraliza a imagem no fundo */
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+
+a,a:hover {
+  text-decoration: none;
+}
+
+.main-wrapper {
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  margin: auto;
+  padding: 32px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+#search-input {
+  display: block;
+  margin-bottom: 24px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#lyrics-list {
+  margin-top: 20px;
+}
+
+.lyrics-link {
+  display: block;
+  margin: 10px 0;
+  color: #d55b2a;
+  background-color: #fdf7f5;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.lyrics-link:hover {
+  color: #5d2b17;
+  text-decoration: none;
+}
