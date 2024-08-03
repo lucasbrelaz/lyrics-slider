@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevButton = document.getElementById('prev');
   const nextButton = document.getElementById('next');
   const clearButton = document.getElementById('clear');
+  const toggleMessageButton = document.getElementById('toggleMessage');
+  const messageContent = document.getElementById('messageContent');
   const fileInput = document.getElementById('inputLyrics');
   const lyricsList = document.getElementById('lyricsList');
 
@@ -13,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   openLyricsButton.addEventListener('click', () => {
     fileInput.click(); // Trigger file input click to open file dialog
+  });
+
+  toggleMessageButton.addEventListener('click', (el) => {
+    toggleMessageButton.classList.toggle('active');
+    messageContent.classList.toggle('hide');
   });
 
   function showSlide(index) {

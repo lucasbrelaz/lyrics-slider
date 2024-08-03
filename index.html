@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Lyrics Slider</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="lyrics-list-container">
         <button id="openLyrics">Carregar Letras</button>
         <input type="file" id="inputLyrics" multiple>
         <ul id="lyricsList"></ul>
     </div>
-    <div class="slider-container">
-        <div id="slider" class="slider"></div>
-        <div class="slider-controls">
-            <button id="prev">Anterior</button>
-            <button id="next">Próxima</button>
-            <button id="clear">Limpar Apresentação</button>
+    <main class="main-wrapper">
+        <div class="message-container">
+            <button id="toggleMessage">👀</button>
+            <div class="message-content" id="messageContent">
+                <h1 contenteditable>PIX@ESPACOALPHA.ORG.BR</h1>
+                <p contenteditable>Colocar na descrição <b>Oferta para o Ministério Jovem</b></p>
+            </div>
         </div>
-    </div>
+        <div class="slider-container">
+            <div id="slider" class="slider"></div>
+            <div class="slider-controls">
+                <button id="prev">Anterior</button>
+                <button id="next">Próxima</button>
+                <button id="clear">Limpar Apresentação</button>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
+
 </html>

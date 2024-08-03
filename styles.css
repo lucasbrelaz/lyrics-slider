@@ -9,6 +9,47 @@ body {
   background: url('background.png') #fff no-repeat;
 }
 
+.hide {
+  visibility: hidden;
+}
+
+button#toggleMessage {
+  font-weight: bold;
+}
+
+button#toggleMessage.active {
+  font-weight: normal;
+}
+
+.main-wrapper {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.message-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.message-content {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: #5d2b17;
+  opacity: .8;
+}
+
+.message-content h1 {
+  font-size: 48px;
+}
+
+.message-content p {
+  font-size: 32px;
+}
+
 .lyrics-list-container {
   opacity: .5;
   position: fixed;
@@ -38,7 +79,8 @@ body {
 
 .slider {
   position: relative;
-  height: 200px; /* Defina uma altura fixa para o contêiner do slider */
+  height: 200px;
+  opacity: .7;
 }
 
 .slide {
@@ -56,6 +98,7 @@ body {
   display: flex; /* Adiciona flexbox para centralizar o texto verticalmente */
   align-items: center; /* Centraliza o texto verticalmente */
   justify-content: center; /* Centraliza o texto horizontalmente */
+  /* font-weight: bold; */
 }
 
 .slide.active {
