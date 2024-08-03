@@ -9,6 +9,10 @@ body {
   background: url('background.png') #fff no-repeat;
 }
 
+a,a:hover {
+  text-decoration: none;
+}
+
 .hide {
   visibility: hidden;
 }
